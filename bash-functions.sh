@@ -2,14 +2,14 @@
 
 # Add or replace value of the export environment variable.
 set_exp_env() {
-    TARGET=$1
-    REPLACE=$2
-    ADD_BIN_TO_PATH=$3
+    local TARGET=$1
+    local REPLACE=$2
+    local ADD_BIN_TO_PATH=$3
 
-    PROFILES=( $HOME/.bashrc $HOME/.profile $HOME/.bash_profile )
-    TARGET_PROFILE="$HOME/.bashrc"
+    local PROFILES=( $HOME/.bashrc $HOME/.profile $HOME/.bash_profile )
+    local TARGET_PROFILE="$HOME/.bashrc"
     
-    ADDNEW='1'
+    local ADDNEW='1'
     for p in ${PROFILES[@]}; do
         EXISTS=$(grep -irs "^export $TARGET" $p | cut -d ':' -f2)
         if ! [ -z "$EXISTS" ]; then
